@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProjectOne.Models.Products>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Products</h1>
+<p>
+    <a asp-controller="Orders" asp-action="Create">Add Product to Cart</a>
+</p>
+<form asp-controller="Products" asp-action="Index" method="get">
+    <p>
+        <input type="submit" value="Item Filter" />
+        <input type="text" name="searchString">
+        <a asp-action="Index">(All)</a>
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

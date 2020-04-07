@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ProjectOne.Models.Orders>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Cart</h1>
+<a asp-action="Checkout">Checkout</a>
+<br />
+<br />
+<form asp-controller="Orders" asp-action="Cart" method="get">
+
+    <p>Login with your First Name: </p>
+    <div class="container">
+        <div class="row">
+
+            <input type="submit" value="Login" />
+
+            <input type="text" name="SearchString">
+        </div>
+    </div>
+</form>
+<br />
+<label>Cart User:</label>  @ViewBag.User
+<br />
+<label>Cart Total:</label>  @ViewBag.CartTot
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Store)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Store)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Item)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
